@@ -2,7 +2,10 @@
 # CoinMarketCap Watchlist
 
 A Python script for collecting information about the top 100 cryptocurrencies 
-from [CoinMarketCap](https://coinmarketcap.com/) saving the data to a CSV file. 
+from [CoinMarketCap](https://coinmarketcap.com/) with 2 different approaches:
+  - HTML parsing
+  - API response parsing
+and saving the data to a CSV file. 
 
 ---
 
@@ -21,7 +24,8 @@ Bakhovskyi Maksym - python software developer
 
 ##  Features 
 
-- Parses top 10 from the CoinMarketCap website. 
+- HTML parser top 10 from the CoinMarketCap website.
+- API response parse top 100 from the CoinMarketCap website.
 - Extracts the following data for each coin: 
   - Rank (`rank`) 
   - Name (`name`) 
@@ -61,7 +65,7 @@ pip install requests beautifulsoup4
 python main.py 
 ``` 
 
-After execution, a CSV file will be created with 100 coins
+After execution, a 2 different CSV files will be created with 10 and 100 coins
 and their details. 
 
 ---
