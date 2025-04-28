@@ -2,16 +2,17 @@ import requests
 
 from configs.configuration import *
 from parsers.scraper import coin_parser_html, fetch_page
-from parsers.parser import coin_parser_api
+from parsers.parser import extract_coin_info_list
 from store_to_csv import store_to_csv
+from models import CryptoCurrencyList
 
 
 def parse_coins():
     """Main function to parse top 100 coins"""
     content = requests.get(API_URL)
-    res = coin_parser_api(content.json())
-    store_to_csv(res, API_CSV_FILE)
-    print(f"Parsing completed. {len(res)} coins saved to {API_CSV_FILE}")
+    coin_info = extract_coin_info_list(CryptoCurrencyList.parse_obj(content.json()['data']))
+    store_to_csv(coin_info, API_CSV_FILE)
+    print(f"Parsing completed. {len(coin_info)} coins saved to {API_CSV_FILE}")
 
 
 def scrape_coins():
